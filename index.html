@@ -237,7 +237,7 @@ function itemHTML(item){
 }
 
 function renderAdd(ca){
-  const catBtns=CATEGORIES.map(c=>`<button class="prod-btn${addCategory===c.id?' active':''}${addCategory===c.id?' style=border-color:#1a7f4b;background:#f0faf5':''}onclick="setAddCat('${c.id}')" style="${addCategory===c.id?'border-color:#1a7f4b;background:#f0faf5;color:#1a7f4b;font-weight:600':''}">${c.label}</button>`).join('');
+  const catBtns=CATEGORIES.map(c=>{const sel=addCategory===c.id;return`<button class="prod-btn" onclick="setAddCat('${c.id}')" style="${sel?'border-color:#1a7f4b;background:#f0faf5;color:#1a7f4b;font-weight:600':''}">${c.label}</button>`;}).join('');
   const cat=CATEGORIES.find(c=>c.id===addCategory);
   const prodBtns=cat.items.map(p=>`<button class="prod-btn" onclick="quickAdd('${p.replace(/'/g,"\\'")}','${addCategory}')">${p}</button>`).join('');
   ca.innerHTML=`
